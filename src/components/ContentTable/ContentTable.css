@@ -1,0 +1,8 @@
+.table{
+    width: calc(100% - 650px);
+    display: block;
+    margin-top: 32px;
+}
+.table tbody tr td{
+    height: 245px;
+}
