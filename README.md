@@ -1,12 +1,8 @@
-# dva-example-user-dashboard
+# Camera
 
-详见[《12 步 30 分钟，完成用户管理的 CURD 应用 (react+dva+antd)》](https://github.com/sorrycc/blog/issues/18)。
+模板Dva，详见(https://github.com/sorrycc/blog/issues/18)。
 
 ---
-
-<p align="center">
-  <img src="https://zos.alipayobjects.com/rmsportal/bmkNCEoluwGaeGjYjInf.png" />
-</p>
 
 ## Getting Started
 Install dependencies.
@@ -22,3 +18,7 @@ $ npm start
 ```
 
 If success, app will be open in your default browser automatically.
+
+## My gratitude project
+
+It can using camera to get the image to read the isbn.
