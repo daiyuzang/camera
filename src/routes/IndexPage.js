@@ -17,10 +17,10 @@ function IndexPage(book) {
         <div className={styles.welcome}>
           <img src={src} alt="books" />
           <IntroList { ...book } />
-          <HotSell { ...book } />
+          <ContentTable { ...book } />
         </div>
-        <ContentTable { ...book } />
-        <RecomList { ...book } />
+          <HotSell { ...book } />
+          <RecomList { ...book } />
       </div>
     </div>
   );
