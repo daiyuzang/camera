@@ -1,5 +1,5 @@
 .table{
-    width: calc(100% - 650px);
+    width: calc(100%);
     display: block;
     margin-top: 32px;
 }
