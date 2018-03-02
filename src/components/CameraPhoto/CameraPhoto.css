@@ -1,0 +1,9 @@
+.input-button{
+    width: 100px;
+    margin: auto;
+    margin-top: 10%;
+}
+.image{
+    transform: translateX(-50%);
+    margin-left: 40px;
+}
