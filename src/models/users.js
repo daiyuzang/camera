@@ -2,6 +2,7 @@ import { routerRedux } from 'dva/router';// eslint-disable-line
 import data from '../datasource';
 import error from '../error';// eslint-disable-line
 import * as TestServers from '../services/users';
+import imageSrc from '../assets/placeholder.png';
 
 export default {
   namespace: 'book',
@@ -21,6 +22,8 @@ export default {
     media: '',
     onlineRead: '',
     price: '',
+    imageSrc,
+    imageTitle: '',
   },
   subscriptions: {
     setup({ dispatch, history }) {
@@ -44,17 +47,29 @@ export default {
         },
       });
     },
-    *callHome({ payload }, { call, put }) {
-      yield put(routerRedux.push("./home"));
+    *callHome({ payload: datas }, { call, put }) {
+      yield put({
+        type: 'loadData',
+        payload: datas
+      });
+      // console.log(datas[0])
+      // if(datas[0] !== '../assets/placeholder.png') {
+        yield put(routerRedux.push("./home"));
+      // }
     },
     *callDetails({ payload }, { call, put }) {
       yield put(routerRedux.push("./users"));
     },
   },
   reducers: {
-    save(state, { payload: { data: list, total, page, dataSource } }) {
+    save(state, { payload: { dataSource } }) {
       console.log(dataSource)
       return { ...state, ...dataSource };
     },
+    loadData(state, { payload: files }) {
+      const imageSrc = files[0];
+      const imageTitle = files[1];
+      return { ...state, imageSrc, imageTitle };
+    }
   },
 };
