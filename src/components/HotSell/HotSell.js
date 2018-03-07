@@ -20,7 +20,7 @@ class HotSell extends Component {
         size='default'
         pagination={pagination}
         columns={columns}
-        title={() => '热卖榜'}
+        title={() => '其他推荐'}
         dataSource={this.props.book.hot}
         className={styles['list']}
       />
