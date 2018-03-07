@@ -16,7 +16,7 @@ class RecomList extends Component {
         <Divider className={styles['divider']}>推荐类似商品</Divider>
         <Card
           className={styles['cards']}
-          hoverable
+          hoverable={false}
           style={{ width: 130 }}
           cover={cover}
           bordered={false}

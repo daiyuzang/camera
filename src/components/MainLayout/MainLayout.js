@@ -4,14 +4,15 @@ import { Link } from 'dva/router';
 
 class Header extends Component {
   state = {
-    pathname: '/home',
+    pathname: '/compares',
   }
 
   handldClick = (e) =>{
     this.setState({
       pathname: e.key,
     });
-    if (this.state.pathname === "/home") {
+    const pathname = e.key;
+    if (pathname === "/home") {
       this.props.dispatch({
         type: 'book/callHome',
       });
@@ -26,11 +27,11 @@ class Header extends Component {
         mode="horizontal"
         theme="dark"
       >
-        <Menu.Item key="/users">
+        <Menu.Item key="/home">
           <Icon type="home" />Home
         </Menu.Item>
-        <Menu.Item key="/home">
-          <Icon type="bars" />Users
+        <Menu.Item key="/compares">
+          <Icon type="bars" />Compares
         </Menu.Item>
       </Menu>
     );

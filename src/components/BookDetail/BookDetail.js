@@ -14,6 +14,22 @@ class BookDetail extends Component {
     const price = this.props.book.price;
     const goodReputation = this.props.book.goodReputation;
     const allPurchase = this.props.book.allPurchase;
+    if(!goodReputation || !allPurchase)
+      return (
+        <Collapse
+          defaultActiveKey={['1','2','3','4']}
+          className={styles['collapse']}
+        >
+          <Panel header="价钱比较" key="1" className={styles['panel1']}> 
+          </Panel>
+          <Panel header="好评比较" key="2" className={styles['panel1']}>
+          </Panel>
+          <Panel header="销售额比较" key="3" className={styles['panel1']}>
+          </Panel>
+        </Collapse>
+      )
+    console.log(this.props.book.goodReputation);
+    console.log(this.props.book.allPurchase);
     let onEvents = {
       'click': this.onChartClick,
       'legendselectchanged': this.onChartLegendselectchanged
@@ -30,10 +46,6 @@ class BookDetail extends Component {
       },
       toolbox: {
         feature: {
-          dataView: {show: true, readOnly: false},
-          magicType: {show: true, type: ['line', 'bar']},
-          restore: {show: true},
-          saveAsImage: {show: true}
         }
       },
       legend: {
@@ -138,7 +150,6 @@ class BookDetail extends Component {
       },
       toolbox: {
         feature: {
-          saveAsImage: {}
         }
       },
       grid: {
@@ -181,7 +192,7 @@ class BookDetail extends Component {
     };
     return (
       <Collapse
-        defaultActiveKey={['1','2','3']}
+        defaultActiveKey={['1','2','3','4']}
         className={styles['collapse']}
       >
         <Panel header="价钱比较" key="1" className={styles['panel1']}>
@@ -200,6 +211,13 @@ class BookDetail extends Component {
           />
         </Panel>
         <Panel header="销售额比较" key="3" className={styles['panel1']}>
+          <ReactEcharts 
+            option={optionSell}
+            style={{ height: '400px' }}
+            onEvents={onEvents}
+          />
+        </Panel>
+        <Panel header="销售额比较" key="4" className={styles['panel1']} style={{ display: 'none'}}>
           <ReactEcharts 
             option={optionSell}
             style={{ height: '400px' }}

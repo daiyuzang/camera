@@ -25,8 +25,8 @@ class Header extends Component {
         <Menu.Item key="/">
           <Icon type="home" />Home
         </Menu.Item>
-        <Menu.Item key="users">
-          <Icon type="bars" />Users
+        <Menu.Item key="compares">
+          <Icon type="bars" />Compares
         </Menu.Item>
       </Menu>
     );
