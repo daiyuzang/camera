@@ -13,7 +13,7 @@ const mockData = Mock.mock({
             'key|+1': 0,//索引值
             'bookContent': '@cparagraph()'//内容概述具体内容
         }],
-        'hot|10': [{//热卖榜
+        'hot|3': [{//热卖榜
             'key|+1': 0,//索引值
             'no|+1': 1,//热卖排名
             'bookName': '@name',//热卖书名
