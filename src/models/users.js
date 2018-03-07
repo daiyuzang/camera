@@ -58,7 +58,7 @@ export default {
       // }
     },
     *callDetails({ payload }, { call, put }) {
-      yield put(routerRedux.push("./users"));
+      yield put(routerRedux.push("./compares"));
     },
   },
   reducers: {
