@@ -39,7 +39,7 @@ function RouterConfig({
       <Switch>
         <Route exact path="/" component={Camera} />
         <Route exact path="/home" component={IndexPage} />
-        <Route exact path="/users" component={Users} />
+        <Route exact path="/compares" component={Users} />
       </Switch>
     </Router>
   );

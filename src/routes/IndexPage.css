@@ -38,3 +38,10 @@
 .list code {
   background: #f7f7f7;
 }
+.copyright{
+  font-size: 14px;
+  width: 370px;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}

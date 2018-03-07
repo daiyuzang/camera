@@ -19,8 +19,9 @@ function IndexPage(book) {
           <IntroList { ...book } />
           <ContentTable { ...book } />
         </div>
-          <HotSell { ...book } />
-          <RecomList { ...book } />
+        <HotSell { ...book } />
+        <RecomList { ...book } />
+        <div className={styles['copyright']}>Copyright ©2018 Graduate Project of Sherry Huang</div>
       </div>
     </div>
   );
