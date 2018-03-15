@@ -1,5 +1,5 @@
-import request from '../utils/request';
-import request1 from '../utils/request';
+import { request } from '../utils/request';
+import { POST } from '../utils/request';
 // import { URL } from '../utils/Constant';
 
 import { PAGE_SIZE } from '../constants';
@@ -26,6 +26,11 @@ import { PAGE_SIZE } from '../constants';
 export function fetch({ page }){
   console.log(page);
   return request(`/api/users?_page=${page}&_limit=${PAGE_SIZE}`);
+}
+
+export function postData(values) { 
+  let config = {};
+  return POST(`http://45.77.68.236:8080/crawler-starter`, values, config);
 }
 
 // export function remove(id) {

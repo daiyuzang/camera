@@ -18,6 +18,7 @@ class CameraPhoto extends Component {
           return function(e) {
           datas.push(e.target.result);
           datas.push(escape(theFile.name));
+          datas.push(file.name);
           that.dispatch({
             type:'book/callHome',
             payload: datas

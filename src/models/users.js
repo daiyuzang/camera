@@ -52,10 +52,13 @@ export default {
         type: 'loadData',
         payload: datas
       });
-      // console.log(datas[0])
-      // if(datas[0] !== '../assets/placeholder.png') {
+      const name = datas[0].split('base64,');
+      const value = {
+        'file_name': datas[2],
+        'data': name[1],
+      };
+        yield call(TestServers.postData, value);
         yield put(routerRedux.push("./home"));
-      // }
     },
     *callDetails({ payload }, { call, put }) {
       yield put(routerRedux.push("./compares"));
@@ -63,7 +66,6 @@ export default {
   },
   reducers: {
     save(state, { payload: { dataSource } }) {
-      console.log(dataSource)
       return { ...state, ...dataSource };
     },
     loadData(state, { payload: files }) {
