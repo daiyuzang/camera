@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Collapse, Upload, Button } from 'antd';
+import { Collapse, message, Upload, Button, Icon } from 'antd';
 import styles from '../CameraPhoto/CameraPhoto.css';
 
 class CameraPhoto extends Component {
@@ -19,15 +19,25 @@ class CameraPhoto extends Component {
           datas.push(e.target.result);
           datas.push(escape(theFile.name));
           datas.push(file.name);
-          that.dispatch({
-            type:'book/callHome',
-            payload: datas
-          })
+          // that.dispatch({
+          //   type:'book/callHome',
+          //   payload: datas
+          // })
         };
       })(file);
 
       // Read in the image file as a data URL.
       reader.readAsDataURL(file);
+    }
+  }
+
+  onChange = (info) => {
+    if (info.file.status === 'done') {
+      message.success(`${info.file.name} file uploaded successfully`, 1, () => {
+        this.props.dispatch({ type: 'book/callHome' });
+      });
+    } else if (info.file.status === 'error') {
+      message.error(`${info.file.name} file upload failed.`);
     }
   }
 
@@ -37,19 +47,13 @@ class CameraPhoto extends Component {
         <Upload
           name="file"
           accept="image/*"
-          action="//jsonplaceholder.typicode.com/posts/"
-          showUploadList={false}
+          action="http://45.77.68.236:8080/crawler-starter"
+          showUploadList={true}
           beforeUpload={this.FileContent}
+          onChange={this.onChange}
         >
-          <Button>Upload</Button>
+          <Button><Icon type="upload" /> Click to Upload</Button>
         </Upload>
-        <output
-          id="list"
-          className={styles['image']}>
-          <span>
-            <img src={this.props.book.imageSrc} alt="bar-code" title={this.props.book.imageTitle} />
-          </span>
-        </output>
       </div>
     );
   }
