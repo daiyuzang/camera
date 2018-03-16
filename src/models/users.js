@@ -47,18 +47,18 @@ export default {
         },
       });
     },
-    *callHome({ payload: datas }, { call, put }) {
-      yield put({
-        type: 'loadData',
-        payload: datas
-      });
-      const name = datas[0].split('base64,');
-      const value = {
-        'file_name': datas[2],
-        'data': name[1],
-      };
-        yield call(TestServers.postData, value);
-        yield put(routerRedux.push("./home"));
+    *callHome({ payload }, { put }) {
+      // yield put({
+      //   type: 'loadData',
+      //   payload: datas
+      // });
+      // const name = datas[0].split('base64,');
+      // const value = {
+      //   'file_name': datas[2],
+      //   'data': name[1],
+      // };
+      // yield call(TestServers.postData, value);
+      yield put(routerRedux.push("./home"));
     },
     *callDetails({ payload }, { call, put }) {
       yield put(routerRedux.push("./compares"));
