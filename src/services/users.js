@@ -28,10 +28,10 @@ export function fetch({ page }){
   return request(`/api/users?_page=${page}&_limit=${PAGE_SIZE}`);
 }
 
-export function postData(values) { 
-  let config = {};
-  return POST(`http://45.77.68.236:8080/crawler-starter`, values, config);
-}
+// export function postData(values) { 
+//   let config = {};
+//   return POST(`http://45.77.68.236:8080/crawler-starter`, values, config);
+// }
 
 // export function remove(id) {
 //   return request(`/api/users/${id}`, {

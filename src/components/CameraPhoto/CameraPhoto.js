@@ -4,32 +4,32 @@ import styles from '../CameraPhoto/CameraPhoto.css';
 
 class CameraPhoto extends Component {
   
-  FileContent = (file) => {
-    console.log(file)
+  // FileContent = (file) => {
+  //   console.log(file)
 
-    // Only process image files. 
-    const that = this.props;
-    if (file.type.match('image.*')) {
+  //   // Only process image files. 
+  //   const that = this.props;
+  //   if (file.type.match('image.*')) {
       
-      const reader = new FileReader();
-      let datas = [];
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-          return function(e) {
-          datas.push(e.target.result);
-          datas.push(escape(theFile.name));
-          datas.push(file.name);
-          // that.dispatch({
-          //   type:'book/callHome',
-          //   payload: datas
-          // })
-        };
-      })(file);
+  //     const reader = new FileReader();
+  //     let datas = [];
+  //     // Closure to capture the file information.
+  //     reader.onload = (function(theFile) {
+  //         return function(e) {
+  //         datas.push(e.target.result);
+  //         datas.push(escape(theFile.name));
+  //         datas.push(file.name);
+  //         // that.dispatch({
+  //         //   type:'book/callHome',
+  //         //   payload: datas
+  //         // })
+  //       };
+  //     })(file);
 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(file);
-    }
-  }
+  //     // Read in the image file as a data URL.
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
 
   onChange = (info) => {
     if (info.file.status === 'done') {
@@ -49,7 +49,7 @@ class CameraPhoto extends Component {
           accept="image/*"
           action="http://45.77.68.236:8080/crawler-starter"
           showUploadList={true}
-          beforeUpload={this.FileContent}
+          // beforeUpload={this.FileContent}
           onChange={this.onChange}
         >
           <Button><Icon type="upload" /> Click to Upload</Button>
