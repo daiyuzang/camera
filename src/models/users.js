@@ -24,6 +24,7 @@ export default {
     price: '',
     imageSrc,
     imageTitle: '',
+    file: null,
   },
   subscriptions: {
     setup({ dispatch, history }) {
@@ -47,6 +48,9 @@ export default {
         },
       });
     },
+    *callCamera({ payload }, { put }) {
+      yield put(routerRedux.push("/"));
+    },
     *callHome({ payload }, { put }) {
       yield put(routerRedux.push("./home"));
     },
@@ -62,6 +66,9 @@ export default {
       const imageSrc = files[0];
       const imageTitle = files[1];
       return { ...state, imageSrc, imageTitle };
+    },
+    loadFile(state, { payload: file }) {
+      return { ...state, file };
     }
   },
 };

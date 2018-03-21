@@ -19,10 +19,10 @@ class CameraPhoto extends Component {
   //         datas.push(e.target.result);
   //         datas.push(escape(theFile.name));
   //         datas.push(file.name);
-  //         // that.dispatch({
-  //         //   type:'book/callHome',
-  //         //   payload: datas
-  //         // })
+  //         that.dispatch({
+  //           type:'book/callHome',
+  //           payload: datas
+  //         })
   //       };
   //     })(file);
 
@@ -34,7 +34,10 @@ class CameraPhoto extends Component {
   onChange = (info) => {
     if (info.file.status === 'done') {
       message.success(`${info.file.name} file uploaded successfully`, 1, () => {
-        this.props.dispatch({ type: 'book/callHome' });
+        this.props.dispatch({
+          type: 'book/loadFile',
+          payload: info.file,
+        });
       });
     } else if (info.file.status === 'error') {
       message.error(`${info.file.name} file upload failed.`);

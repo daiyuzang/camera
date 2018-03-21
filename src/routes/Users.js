@@ -5,6 +5,11 @@ import MainLayout from '../components/MainLayout/MainLayout';
 import BookDetail from '../components/BookDetail/BookDetail';
 
 function Users(book) {
+  if(!book.file){
+    book.dispatch({
+      type: 'book/callCamera',
+    });
+  }
   return (
     <div>
       <MainLayout { ...book } />
