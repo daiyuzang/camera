@@ -54,6 +54,10 @@ export default {
     *callHome({ payload }, { put }) {
       yield put(routerRedux.push("./home"));
     },
+    *FiletoHome({ payload: file }, { put }) {
+      yield put({ type: 'loadFile', payload: file });
+      yield put(routerRedux.push("./home"));
+    },
     *callDetails({ payload }, { call, put }) {
       yield put(routerRedux.push("./compares"));
     },
@@ -68,6 +72,7 @@ export default {
       return { ...state, imageSrc, imageTitle };
     },
     loadFile(state, { payload: file }) {
+      console.log(file)
       return { ...state, file };
     }
   },

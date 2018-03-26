@@ -5,7 +5,7 @@ import MainLayout from '../components/MainLayout/MainLayout';
 import BookDetail from '../components/BookDetail/BookDetail';
 
 function Users(book) {
-  if(!book.file){
+  if(!book.book.file){
     book.dispatch({
       type: 'book/callCamera',
     });

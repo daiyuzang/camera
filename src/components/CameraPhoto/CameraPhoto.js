@@ -35,8 +35,8 @@ class CameraPhoto extends Component {
     if (info.file.status === 'done') {
       message.success(`${info.file.name} file uploaded successfully`, 1, () => {
         this.props.dispatch({
-          type: 'book/loadFile',
-          payload: info.file,
+          type: 'book/FiletoHome',
+          payload: info.file.name,
         });
       });
     } else if (info.file.status === 'error') {
