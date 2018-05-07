@@ -3,7 +3,6 @@ import { POST } from '../utils/request';
 // import { URL } from '../utils/Constant';
 
 import { PAGE_SIZE } from '../constants';
-
 // let csrfHeaderName = window.csrfHeader || false;
 // let csrfToken = window.csrfToken || false;
 
@@ -28,6 +27,9 @@ export function fetch({ page }){
   return request(`/api/users?_page=${page}&_limit=${PAGE_SIZE}`);
 }
 
+export function getSource(isbn) {
+  return request(`http://localhost:7777/request_data?isbn=${isbn}`);
+}
 // export function postData(values) { 
 //   let config = {};
 //   return POST(`http://45.77.68.236:8080/crawler-starter`, values, config);
