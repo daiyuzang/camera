@@ -11,7 +11,6 @@ class Header extends Component {
     this.setState({
       pathname: e.key,
     });
-    console.log(e.key)
   }
 
   render() {
