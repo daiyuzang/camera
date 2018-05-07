@@ -6,3 +6,12 @@
 .table tbody tr td{
     height: 245px;
 }
+:global .ant-card-head-title{
+    font-size: 20px;
+}
+.table h3{
+    font-size: 15px;
+}
+.table p{
+    font-size: 13px;
+}

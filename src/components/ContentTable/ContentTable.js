@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'antd';
+import { Card } from 'antd';
 import styles from '../ContentTable/ContentTable.css';
 
 class ContentTable extends Component {
@@ -16,15 +16,15 @@ class ContentTable extends Component {
         pageSize: 1,
         hideOnSinglePage: true,
     }
+    const data = this.props.book.content;
+    console.log(typeof data)
     return (
-      <Table
-        size='default'
-        columns={columns}
-        bordered
-        pagination={pagination}
-        dataSource={this.props.book.content}
+      <Card        
+        title="内容概述"
         className={styles['table']}
-      />
+      >
+        <div dangerouslySetInnerHTML={{__html: data}} />
+      </Card>
     );
   }
 }
