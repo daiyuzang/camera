@@ -8,12 +8,10 @@ class BookDetail extends Component {
 
 
   render() {
-    const contentIntro = this.props.book.contentIntro;
-    const authorIntro = this.props.book.authorIntro;
-    const media = this.props.book.media;
     const price = this.props.book.price;
     const goodReputation = this.props.book.goodReputation;
     const allPurchase = this.props.book.allPurchase;
+    console.log(price);
     if(!goodReputation || !allPurchase)
       return (
         <Collapse

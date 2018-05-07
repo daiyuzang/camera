@@ -3,40 +3,14 @@ import { Collapse, message, Upload, Button, Icon } from 'antd';
 import styles from '../CameraPhoto/CameraPhoto.css';
 
 class CameraPhoto extends Component {
-  
-  // FileContent = (file) => {
-  //   console.log(file)
 
-  //   // Only process image files. 
-  //   const that = this.props;
-  //   if (file.type.match('image.*')) {
-      
-  //     const reader = new FileReader();
-  //     let datas = [];
-  //     // Closure to capture the file information.
-  //     reader.onload = (function(theFile) {
-  //         return function(e) {
-  //         datas.push(e.target.result);
-  //         datas.push(escape(theFile.name));
-  //         datas.push(file.name);
-  //         that.dispatch({
-  //           type:'book/callHome',
-  //           payload: datas
-  //         })
-  //       };
-  //     })(file);
-
-  //     // Read in the image file as a data URL.
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
 
   onChange = (info) => {
     if (info.file.status === 'done') {
       message.success(`${info.file.name} file uploaded successfully`, 1, () => {
         this.props.dispatch({
           type: 'book/FiletoHome',
-          payload: info.file.name,
+          payload: info.file.response,
         });
       });
     } else if (info.file.status === 'error') {
@@ -50,7 +24,7 @@ class CameraPhoto extends Component {
         <Upload
           name="file"
           accept="image/*"
-          action="http://45.77.68.236:8080/crawler-starter"
+          action="http://localhost:7777/crawler-starter"
           showUploadList={true}
           // beforeUpload={this.FileContent}
           onChange={this.onChange}
