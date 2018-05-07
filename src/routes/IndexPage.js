@@ -10,11 +10,12 @@ import RecomList from '../components/RecomList/RecomList';
 
 function IndexPage(book) {
   const src = book.book.bookImg;
-  if(!book.book.file){
+  if(!book.book.isbn){
     book.dispatch({
       type: 'book/callCamera',
     });
   }
+  // console.log(book.book);
   return (
     <div>
       <Header { ...book } />
