@@ -58,13 +58,33 @@ export default {
       yield put(routerRedux.push("./home"));
     },
     *FiletoHome({ payload: isbn }, { put, call }) {
+      if(isbn){
+        yield put(routerRedux.push("./"));
+      }
       yield put({ type: 'loadFile', payload: isbn });
-      const { data } = yield call(TestServers.getSource, isbn);
-      yield put({
-        type: 'saveData',
-        payload: data,
-      });
-      yield put(routerRedux.push("./home"));
+      let data = yield call(TestServers.getSource, isbn);
+      let time;
+      let i = 10;
+      while(isbn && i > 0){
+        time = setInterval( data, 6000);
+        console.log(data);
+        console.log(data.data['amazonbooks'])
+        if(!data.data['amazonbooks'].length && !data.data['dangdangbooks'].length && !data.data['jdbooks'].length){
+          data = yield call(TestServers.getSource, isbn);
+          i--;
+        }
+        else{
+          break;
+        }
+      }
+        clearInterval(time);
+        let datas = data.data;
+        console.log(datas)
+        yield put({
+          type: 'saveData',
+          payload: datas,
+        });
+        yield put(routerRedux.push("./home"));
     },
     *callDetails({ payload }, { call, put }) {
       yield put(routerRedux.push("./compares"));
@@ -84,16 +104,19 @@ export default {
     },
     saveData(state, { payload: data }) {
       console.log(data)
-      const imgs = data['amazonbooks'][0]['h_books'].split('h_book_img: [{"');
+      let imgs = data['amazonbooks'][0]['h_books'];
       const hot_imgs = [];
-      hot_imgs.push(imgs[1].split('"')[0]);
-      hot_imgs.push(imgs[1].split('"')[2]);
-      hot_imgs.push(imgs[1].split('"')[4]);
-      hot_imgs.push(imgs[2].split('"')[0]);
-      hot_imgs.push(imgs[2].split('"')[2]);
-      hot_imgs.push(imgs[2].split('"')[4]);
-      hot_imgs.push(imgs[3].split('"')[0]);
-      hot_imgs.push(imgs[3].split('"')[2]);
+      if(imgs){
+        imgs = imgs.split('h_book_img: [{"');
+        hot_imgs.push(imgs[1].split('"')[0]);
+        hot_imgs.push(imgs[1].split('"')[2]);
+        hot_imgs.push(imgs[1].split('"')[4]);
+        hot_imgs.push(imgs[2].split('"')[0]);
+        hot_imgs.push(imgs[2].split('"')[2]);
+        hot_imgs.push(imgs[2].split('"')[4]);
+        hot_imgs.push(imgs[3].split('"')[0]);
+        hot_imgs.push(imgs[3].split('"')[2]);
+      }
       const hot = [{
         'key': 0,
         'no': '亚马逊',
@@ -107,20 +130,26 @@ export default {
       },{
         'key': 2,
         'no': '京东',
-        'money': null,// data['jdbooks'][0]['price'],
+        'money': data['jdbooks'][0]['price'],
         'name': null, // data['jdbooks'][0]['bookName'],
       }];
       const price = {
         'dangdang': parseFloat(data['dangdangbooks'][0]['price']),
         'amazon': parseFloat(data['amazonbooks'][0]['price'].split('￥')[1]),
-        'jingdong': 0,
+        'jingdong': parseFloat(data['jdbooks'][0]['price']),
       };
       const goodReputation = {
-        'dangdang': data['dangdangbooks'][0]['goodReputation'].match(/^\d+(\.\d+)?$/),
-        'amazon': data['amazonbooks'][0]['goodReputation'].match(/^\d+(\.\d+)?$/),
-        'jingdong': 0,
-      }
+        'dangdang': data['dangdangbooks'][0]['goodReputation'],
+        'amazon': data['amazonbooks'][0]['goodReputation'].match(/\d+.\d+/)[0],
+        'jingdong':  data['jdbooks'][0]['goodReputation'],
+      };
+      const allPurchase = {
+        'dangdang': data['dangdangbooks'][0]['allPurchase'],
+        'amazon': data['amazonbooks'][0]['allPurchase'].match(/\d+/)[0],
+        'jingdong': data['jdbooks'][0]['allPurchase'],
+      };
       console.log(goodReputation)
+      console.log(allPurchase)
       const bookData = {
         author: data['amazonbooks'][0]['author'],
         bookImg: data['amazonbooks'][0]['bookImg'].split('"')[1],
@@ -132,6 +161,8 @@ export default {
         hot: hot,
         recommend: hot_imgs,
         price: price,
+        goodReputation: goodReputation,
+        allPurchase: allPurchase,
       };
       return { ...state, ...bookData };
     }
