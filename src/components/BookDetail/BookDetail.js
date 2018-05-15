@@ -61,12 +61,12 @@ class BookDetail extends Component {
       yAxis: [
         {
           type: 'value',
-          name: '价格',
+          name: '价格(RMB)',
           min: 0,
           max: 250,
           interval: 50,
           axisLabel: {
-            formatter: '{value} RMB'
+            formatter: '{value}'
           }
         },
       ],

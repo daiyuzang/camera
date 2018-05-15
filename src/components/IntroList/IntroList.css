@@ -1,5 +1,13 @@
-.list{
-    width: calc(100% - 350px);
-    margin-top: 72px;
-    display: inline-block;
+@media screen and (min-width:1024px){
+    .list{
+        width: calc(100% - 350px);
+        margin-top: 72px;
+        display: inline-block;
+    }
+}
+@media screen and (max-width:1023px){
+    .list{
+        margin-top: 72px;
+        display: inline-block;
+    }
 }

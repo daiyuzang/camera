@@ -3,7 +3,17 @@
     margin: auto;
     margin-top: 48px;
 }
-.panel1{
-    width: 80%;
-    margin: auto;
+@media screen and (min-width:1024px){
+    .panel1{
+        width: 80%;
+        margin: auto;
+    }
+}
+@media screen and (max-width:1023px){
+    .panel1{
+        margin: auto;
+    }
+    :global .ant-collapse-content{
+        padding: 0 4px;
+    }
 }

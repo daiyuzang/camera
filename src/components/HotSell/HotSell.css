@@ -3,3 +3,6 @@
     width: 100%;
     margin-bottom: 48px;
 }
+:global .ant-table-thead > tr > th{
+    padding:16px 16px;
+}

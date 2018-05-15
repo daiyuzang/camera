@@ -8,11 +8,24 @@
     width: 0px !important;
     display: inline;
 }
-.cards div img{
-    width: 130px;
-    margin-right: calc((100% - 1040px) / 7);
-    display: inline;
+@media screen and (min-width:1024px){
+    .cards div img{
+        width: 130px;
+        margin-right: calc((100% - 1040px) / 7);
+        display: inline;
+    }
+    .cards div a:nth-child(8) img{
+        margin-right: 0;
+    }
 }
-.cards div a:nth-child(8) img{
-    margin-right: 0;
+@media screen and (max-width:1023px){
+    .cards div img{
+        width: 150px;
+        margin-right: 20px;
+        margin-top: 5px;
+        display: inline;
+    }
+    .cards div a:nth-child(2n) img{
+        margin-right: 0;
+    }
 }
